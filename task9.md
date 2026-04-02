@@ -1,6 +1,6 @@
-# 🛠️ Task 9 – Ansible Lab Implementation
+#  Task 9 – Ansible Lab Implementation
 
-## 📌 Overview
+##  Overview
 
 This lab demonstrates the setup and use of Ansible for configuration management using Docker containers. The implementation progresses from basic setup to advanced role-based automation, following industry best practices.
 
@@ -8,7 +8,7 @@ This lab demonstrates the setup and use of Ansible for configuration management 
 
 ## 🔹 Part 1: Ansible Setup and Basics
 
-### 🧩 Docker Network
+###  Docker Network
 
 A custom Docker network was created to enable communication between containers:
 
@@ -18,7 +18,7 @@ docker network create ansible-net
 
 ---
 
-### 🖥️ Container Setup
+### Container Setup
 
 Three containers were deployed:
 
@@ -33,7 +33,7 @@ docker run -dit --name target2 --network ansible-net ubuntu
 
 ---
 
-### 🔐 SSH Configuration
+###  SSH Configuration
 
 SSH service was manually enabled inside target containers:
 
@@ -44,7 +44,7 @@ mkdir -p /var/run/sshd
 
 ---
 
-### 🔑 SSH Key-Based Authentication
+###  SSH Key-Based Authentication
 
 ```bash
 ssh-keygen -t rsa
@@ -56,7 +56,7 @@ This enabled passwordless authentication from the control node.
 
 ---
 
-### 📄 Inventory File
+###  Inventory File
 
 ```ini
 [target]
@@ -66,7 +66,7 @@ target2
 
 ---
 
-### ⚙️ Basic Playbook
+###  Basic Playbook
 
 ```yaml
 - hosts: target
@@ -85,7 +85,7 @@ target2
 
 ## 🔹 Part 2: Lab Configuration Management
 
-### 🎯 Objectives Achieved
+###  Objectives Achieved
 
 * Automated package installation
 * Configured shell and editor environments
@@ -95,7 +95,7 @@ target2
 
 ---
 
-### 📦 Package Installation
+###  Package Installation
 
 Due to Docker limitations, the `command` module was used instead of `apt` to avoid interactive blocking:
 
@@ -109,7 +109,7 @@ Due to Docker limitations, the `command` module was used instead of `apt` to avo
 
 ---
 
-## 🧾 Bash Configuration (Template)
+##  Bash Configuration (Template)
 
 ```bash
 alias ll='ls -alF'
@@ -120,7 +120,7 @@ alias update='apt update && apt upgrade'
 
 ---
 
-## 🧾 Vim Configuration (Template)
+##  Vim Configuration (Template)
 
 ```vim
 set number
@@ -132,7 +132,7 @@ syntax on
 
 ---
 
-## 🔐 Security Policies
+##  Security Policies
 
 ### SSH Hardening
 
@@ -178,7 +178,7 @@ syntax on
 
 ---
 
-## ⚙️ Advanced Features Used
+## Advanced Features Used
 
 * **Variables** → package list
 * **Templates** → bashrc and vimrc
@@ -193,7 +193,7 @@ serial: 1
 
 # 🔹 Part 3: Ansible Roles for Lab Management
 
-## 📁 Role Structure
+##  Role Structure
 
 ```text
 ansible_lab/
@@ -207,7 +207,7 @@ ansible_lab/
 
 ---
 
-## 🔧 lab-base Role
+##  lab-base Role
 
 Responsibilities:
 
@@ -230,7 +230,7 @@ Responsibilities:
 
 ---
 
-## 💻 student-workstation Role
+##  student-workstation Role
 
 Responsibilities:
 
@@ -256,7 +256,7 @@ Responsibilities:
 
 ---
 
-## 🚀 Role-Based Playbook
+##  Role-Based Playbook
 
 ```yaml
 - hosts: target
@@ -278,7 +278,7 @@ Responsibilities:
 
 ---
 
-# ⚠️ Challenges Faced
+#  Challenges Faced
 
 | Issue                 | Solution                        |
 | --------------------- | ------------------------------- |
@@ -289,6 +289,6 @@ Responsibilities:
 
 ---
 
-# 🚀 Conclusion
+#  Conclusion
 
 This lab successfully demonstrates a complete Ansible automation workflow, evolving from basic configuration to modular, role-based infrastructure management. The implementation reflects real-world DevOps practices, ensuring scalability, maintainability, and robustness.
